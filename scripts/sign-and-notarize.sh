@@ -8,6 +8,7 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 : "${TYPING_GARDEN_NOTARY_PROFILE:?Set TYPING_GARDEN_NOTARY_PROFILE to a notarytool Keychain profile}"
 
 IDENTITY="$TYPING_GARDEN_DEVELOPER_ID"
+BUILDER_IDENTITY="${IDENTITY#Developer ID Application: }"
 NOTARY_PROFILE="$TYPING_GARDEN_NOTARY_PROFILE"
 
 cd "$PROJECT_ROOT"
@@ -48,7 +49,7 @@ echo "Typing Garden v${VERSION} ${ARCH}: Developer ID signing and notarization"
 npm test
 npm run build
 
-npx electron-builder --dir --mac "--${ARCH}" --config.mac.identity="$IDENTITY"
+npx electron-builder --dir --mac "--${ARCH}" --config.mac.identity="$BUILDER_IDENTITY"
 
 if [ ! -d "$APP_PATH" ]; then
   echo "App not found: $APP_PATH"

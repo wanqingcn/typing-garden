@@ -72,6 +72,11 @@ describe("macOS app packaging", () => {
     expect(existsSync(scriptPath)).toBe(true);
     expect(script).toContain("--keychain-profile");
     expect(script).toContain("TYPING_GARDEN_NOTARY_PROFILE");
+    expect(script).toContain(
+      'BUILDER_IDENTITY="${IDENTITY#Developer ID Application: }"'
+    );
+    expect(script).toContain('--config.mac.identity="$BUILDER_IDENTITY"');
+    expect(script).not.toContain('--config.mac.identity="$IDENTITY"');
     expect(script).not.toMatch(/APPLE_ID|APP_PASSWORD|--password|identity=null/);
   });
 
