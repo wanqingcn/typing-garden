@@ -1,0 +1,30 @@
+node_modules/
+dist/
+release/
+coverage/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local credentials and Apple signing material
+.env
+.env.*
+!.env.example
+*.cer
+*.key
+*.mobileprovision
+*.p12
+*.p8
+*.pem
+*.provisionprofile
+
+# Private generation and App Store tooling
+/assets/icons/aiart/
+/build/entitlements.mas.inherit.plist
+/build/entitlements.mas.plist
+/scripts/generate-aiart-icons.py
+/scripts/upload-app-store.sh
